@@ -1,0 +1,43 @@
+<div class="cart-container">
+    <h2>Your Cart</h2>
+  
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <div class="cart-items">
+        <mat-card class="cart-card" *ngFor="let item of cartItems">
+          <div class="cart-item">
+            <img [src]="item.imageUrl" alt="{{ item.title }}" />
+            <div class="details">
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.price | currency }}</p>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+  
+      <div class="checkout">
+        <h3>Total: {{ getTotal() | currency }}</h3>
+        <button mat-raised-button color="primary" (click)="placeOrder()">Checkout</button>
+      </div>
+    </div>
+  
+    <ng-template #emptyCart>
+      <p class="empty">Your cart is empty. Explore our menu to add items!</p>
+    </ng-template>
+  
+    <div class="suggestions">
+      <h3>You may also like</h3>
+      <div class="suggestion-grid">
+        <mat-card *ngFor="let item of suggestedItems" class="suggestion-card">
+          <img mat-card-image [src]="item.imageUrl" alt="{{ item.title }}" />
+          <mat-card-content>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.price | currency }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button color="accent" (click)="addToCart(item)">Add</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  

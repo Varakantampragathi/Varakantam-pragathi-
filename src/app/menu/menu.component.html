@@ -1,0 +1,16 @@
+<div class="menu-container">
+    <div class="menu-grid">
+      <mat-card class="menu-card" *ngFor="let item of menuItems">
+        <img mat-card-image [src]="item.imageUrl" alt="{{ item.title }}" />
+        <mat-card-content>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+          <p class="price">{{ item.price | currency }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click)="addToCart(item)">Add to Cart</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  

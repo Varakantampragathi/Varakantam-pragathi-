@@ -1,0 +1,29 @@
+<div class="admin-container">
+    <mat-card>
+      <mat-card-title>Add Menu Item</mat-card-title>
+      <form [formGroup]="menuItemForm" (ngSubmit)="onAddMenuItem()">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Title" formControlName="title">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Category" formControlName="category">
+            <mat-option value="Biryani">Biryani</mat-option>
+            <mat-option value="Starter">Starter</mat-option>
+            <mat-option value="Beverage">Beverage</mat-option>
+            <mat-option value="Dessert">Dessert</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput type="number" placeholder="Price" formControlName="price">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Image URL" formControlName="imageUrl">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="menuItemForm.invalid">Add Item</button>
+      </form>
+    </mat-card>
+  </div>
+  

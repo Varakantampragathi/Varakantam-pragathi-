@@ -1,0 +1,26 @@
+<div class="login-container">
+    <mat-card>
+      <mat-card-title>Login</mat-card-title>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+  
+        <mat-form-field class="full-width">
+          <input matInput type="password" placeholder="Password" formControlName="password">
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+          Login
+        </button>
+      </form>
+
+      <!-- 🔴 Error message shown only on login failure -->
+      <div *ngIf="loginError" class="error-message">
+        {{ loginError }}
+      </div>
+      <p>Don’t have an account? <a routerLink="/signup">Signup here</a></p>
+    </mat-card>
+  </div>
+  

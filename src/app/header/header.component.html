@@ -1,0 +1,21 @@
+<mat-toolbar class="custom-toolbar">
+    <div class="logo-section">
+      <img src="assets/images/Meal_box.jpg" alt="Meal Box Logo" class="logo" />
+      <span class="title">Meal Box</span>
+    </div>
+  
+    <span class="spacer"></span>
+  
+    <ng-container *ngIf="!authService.isLoggedIn(); else loggedIn">
+      <button mat-stroked-button color="accent" class="nav-btn" routerLink="/login" routerLinkActive="active">Login</button>
+      <button mat-flat-button color="warn" class="nav-btn" routerLink="/signup" routerLinkActive="active">Signup</button>
+    </ng-container>
+  
+    <ng-template #loggedIn>
+      <div class="user-section">
+        <span class="welcome-msg">👋 Hi, {{ authService.currentUser.username }}</span>
+        <button mat-stroked-button color="primary" class="nav-btn" (click)="logout()">Logout</button>
+      </div>
+    </ng-template>
+  </mat-toolbar>
+  
